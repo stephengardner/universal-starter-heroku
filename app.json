@@ -1,0 +1,10 @@
+{
+  "name": "Angular Universal Heroku",
+  "description": "Heroku build for Angular Universal",
+  "keywords": [
+    "Angular",
+    "Universal"
+  ],
+  "website": "https://github.com/stephengardner/universal-starter-heroku",
+  "repository": "https://github.com/stephengardner/universal-starter-heroku"
+}
