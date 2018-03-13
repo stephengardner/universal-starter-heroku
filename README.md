@@ -2,12 +2,34 @@
   <img src="https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png" alt="Universal Angular" height="320"/>
 </p>
 
-# Angular Universal Starter [![Universal Angular](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
+# Angular Universal Starter Heroku [![Universal Angular](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
+> Heroku support for the official Angular Universal repository
+
+### Install
+```
+git clone https://github.com/stephengardner/universal-starter-heroku
+cd universal-starter-heroku
+npm i
+```
+### Deploying to Heroku:
+```
+git init
+heroku login
+heroku create
+git add .
+git commit -m "initial commit"
+git push heroku master
+heroku open
+```
+---
+
+## Original Angular Universal Starter Readme:
+
 > Server-Side Rendering for Angular
 
 A minimal Angular starter for Universal JavaScript using TypeScript and Webpack
 
-> If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
+> If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -22,7 +44,7 @@ We're utilizing packages from the [Angular Universal @nguniversal](https://githu
 ### Build Time Prerender(prerender) Vs. Server Side Rendering(ssr)
 This repo demonstrates the use of 2 different forms of Server Side Rendering.
 
-**Prerender(prerender)** 
+**Prerender(prerender)**
 * Happens at build time
 * Renders your application and replaces the dist index.html with a version rendered at the route `/`.
 
@@ -52,14 +74,14 @@ This repo demonstrates the use of 2 different forms of Server Side Rendering.
  - For the server bundle you may need to include your 3rd party module into `nodeExternals` whitelist
 
  - **`window`**, **`document`**, **`navigator`**, and other browser types - _do not exist on the server_ - so using them, or any library that uses them (jQuery for example) will not work. You do have some options, if you truly need some of this functionality:
-    - If you need to use them, consider limiting them to only your client and wrapping them situationally. You can use the Object injected using the PLATFORM_ID token to check whether the current platform is browser or server. 
-    
+    - If you need to use them, consider limiting them to only your client and wrapping them situationally. You can use the Object injected using the PLATFORM_ID token to check whether the current platform is browser or server.
+
     ```typescript
      import { PLATFORM_ID } from '@angular/core';
      import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-     
+
      constructor(@Inject(PLATFORM_ID) private platformId: Object) { ... }
-     
+
      ngOnInit() {
        if (isPlatformBrowser(this.platformId)) {
           // Client only code.
@@ -71,7 +93,7 @@ This repo demonstrates the use of 2 different forms of Server Side Rendering.
        }
      }
     ```
-    
+
      - Try to *limit or* **avoid** using **`setTimeout`**. It will slow down the server-side rendering process. Make sure to remove them [`ngOnDestroy`](https://angular.io/docs/ts/latest/api/core/index/OnDestroy-class.html) in Components.
    - Also for RxJs timeouts, make sure to _cancel_ their stream on success, for they can slow down rendering as well.
  - **Don't manipulate the nativeElement directly**. Use the _Renderer2_ from ["@angular/core"](https://angular.io/api/core/Renderer2). We do this to ensure that in any environment we're able to change our view.
