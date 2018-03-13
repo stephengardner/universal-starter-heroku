@@ -4,9 +4,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/universal-starter.git"
+    "url": "https://github.com/stephengardner/universal-starter-heroku.git"
   },
   "contributors": [
+    "Augie Gardner <opensourceaugie@gmail.com>",
     "AngularClass <hello@angularclass.com>",
     "PatrickJS <patrick@angularclass.com>",
     "Jeff Whelpley <jeff@gethuman.com>",
@@ -17,6 +18,8 @@
   ],
   "scripts": {
     "ng": "ng",
+    "start:heroku": "node dist/server",
+    "postinstall": "npm run build:ssr",
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint --fix",
